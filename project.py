@@ -12,19 +12,19 @@ print('\nThe two sentence summary: An exploration of Benford\'s Law as applied t
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-from pathlib import Path
+import pathlib
+import sys
 
 # --set path to project files--
-print('\nChange the path here to where the project files were downloaded on your machine.')
-my_folder = "c:\\Users\\Corrina Del Greco\\Documents\\ERAU\\MA305\\My Work\\Project\\"
-print('You\'re telling me that the files are at: ' + my_folder + '\n')
+my_folder = "C:\\Users\\Corrina Del Greco\\Documents\\ERAU\\GitHub\\benfords-law-and-elections\\"
+print('Expecting the project files to be downloaded on your machine at: ' + my_folder + '\n')
 
 # --check if benford djstribution file exists--
 bd_local_csv_filename = my_folder + "benforddist.csv"
-my_file = Path(bd_local_csv_filename)
+my_file = pathlib.Path(bd_local_csv_filename)
 if my_file.exists() == False:
     print('\nFile does not exist: ' + bd_local_csv_filename)
-    print('Check and that path and rerun before continuing.\n')
+    print('Check that path and rerun before continuing.\n')
     exit()
     
 # --load benford distribution file--
@@ -56,7 +56,7 @@ print('\nElection data for Chicago\'s 2069 precincts is publicly available onlin
 # https://chicagoelections.gov/en/election-results-specifics.asp
 print('I\'ve downloaded the data and converted it to a csv containing only columns relevant to our experiment:')
 print('   Total votes, votes for Biden, and votes for Trump')
-print('If you want to do this yourself, change the values here in the code to match your file.\n')
+print('If you want to do this yourself, change the filename and column values here in the code to match your file.\n')
 
 local_csv_filename = my_folder + "mydataexport.csv" # csv file name
 v_column = 'Votes'                                  # column header for total votes
@@ -64,7 +64,7 @@ d_column = 'Joseph R. Biden & Kamala D. Harris'     # column header for democrat
 r_column = 'Donald J. Trump & Michael R. Pence'     # column header for republican votes
 
 # --check if data file exists--
-my_file = Path(local_csv_filename)
+my_file = pathlib.Path(local_csv_filename)
 if my_file.exists() == False:
     print('\nFile does not exist: ' + local_csv_filename)
     print('Check that path and rerun before continuing.\n')
